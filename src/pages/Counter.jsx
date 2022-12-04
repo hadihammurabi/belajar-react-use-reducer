@@ -15,8 +15,8 @@ const Counter = () => {
   });
 
   return <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <div style={{ fontSize: '100px', color: config.darkMode ? 'white': '' }}>{state.counter}</div>
-    <div style={{ display: 'flex' }}>
+    <div style={{ fontSize: '100px', color: config.darkMode ? 'white': '', textAlign: 'center' }}>{state.counter}</div>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div>
         <button onClick={decrement}>-</button>
       </div>

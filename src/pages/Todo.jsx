@@ -26,26 +26,28 @@ const Todo = () => {
   }, []);
 
   return <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <form onSubmit={add}>
-        <input value={todoInput} onChange={e => setTodoInput(e.target.value)} />
+        <input value={todoInput} onChange={e => setTodoInput(e.target.value)} style={{ padding: '5px 0' }} />
         <button>Save</button>
       </form>
     </div>
 
-    <ul>
-      {
-        state.todos.map(todo => {
-          return <TodoItem
-            key={todo.id}
-            config={config}
-            todo={todo}
-            onDone={done}
-            onDelete={del}
-          />
-        })
-      }
-    </ul>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <ul>
+        {
+          state.todos.map(todo => {
+            return <TodoItem
+              key={todo.id}
+              config={config}
+              todo={todo}
+              onDone={done}
+              onDelete={del}
+            />
+          })
+        }
+      </ul>
+    </div>
   </div>;
 };
 
