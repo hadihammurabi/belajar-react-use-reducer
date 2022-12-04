@@ -1,8 +1,10 @@
 import { useCallback } from "react";
+import { useConfig } from "../hooks/useConfig";
 import { useCounter, ACTION as COUNTER_ACTION } from "../hooks/useCounter";
 
 const Counter = () => {
   const [state, dispatch] = useCounter();
+  const [config] = useConfig();
 
   const increment = useCallback(() => {
     dispatch({type: COUNTER_ACTION.INCREMENT});
@@ -13,7 +15,7 @@ const Counter = () => {
   });
 
   return <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <div style={{ fontSize: '100px' }}>{state.counter}</div>
+    <div style={{ fontSize: '100px', color: config.darkMode ? 'white': '' }}>{state.counter}</div>
     <div style={{ display: 'flex' }}>
       <div>
         <button onClick={decrement}>-</button>

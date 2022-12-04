@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useCallback } from "react";
+import { useConfig } from "../hooks/useConfig";
 import { useTodo, ACTION as TODO_ACTION } from "../hooks/useTodo";
 
 const Todo = () => {
   const [state, dispatch] = useTodo();
+  const [config] = useConfig();
   const [todoInput, setTodoInput] = useState('');
 
   const add = useCallback((e) => {
@@ -36,6 +38,7 @@ const Todo = () => {
         state.todos.map(todo => {
           return <TodoItem
             key={todo.id}
+            config={config}
             todo={todo}
             onDone={done}
             onDelete={del}
@@ -46,9 +49,9 @@ const Todo = () => {
   </div>;
 };
 
-const TodoItem = ({ todo, onDone, onDelete }) => {
+const TodoItem = ({ config, todo, onDone, onDelete }) => {
   return <li style={{display: 'flex'}}>
-    <div style={{ textDecoration: todo.done ? 'line-through' : 'none' }}>{todo.title}</div>
+    <div style={{ textDecoration: todo.done ? 'line-through' : 'none', color: config.darkMode ? 'white': '' }}>{todo.title}</div>
     {
       todo.done ?
       <button onClick={() => onDelete(todo.id)}>delete</button> :
