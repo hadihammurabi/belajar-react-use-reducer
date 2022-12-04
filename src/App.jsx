@@ -10,6 +10,7 @@ function App() {
     <RouterProvider router={router}>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Link to={'/'} style={{ margin: '10px' }}>Counter</Link>
+        <Link to={'/todo'} style={{ margin: '10px' }}>Todo</Link>
       </div>
       <Outlet />
     </RouterProvider>
